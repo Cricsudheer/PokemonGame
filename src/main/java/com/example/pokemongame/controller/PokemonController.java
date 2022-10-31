@@ -50,10 +50,8 @@ public class PokemonController {
 
     @GetMapping(value = "/search/{pokemonName}" , consumes =  "application/json" , produces = "application/json")
     public PokemonResponse searchPokemon(@PathVariable String pokemonName){
-          PokemonResponse pokemonResponse = new PokemonResponse();
-          pokemonResponse.setPokemonList(pokemonrepository.findByName(pokemonName));
-          pokemonResponse.setMessage(String.format("Found a total of %d pokemons", pokemonResponse.getPokemonList().size()));
-          return pokemonResponse  ;
+
+          return pokemonservice.searchPokemon(pokemonName)  ;
     }
 
 }
